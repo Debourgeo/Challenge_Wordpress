@@ -1,0 +1,83 @@
+#banners {
+    width: 100%;
+    padding-bottom: 2rem;
+    height: auto;
+    display: flex;
+    justify-content: start;
+}
+
+#banners:nth-child(1) {
+    background: white;
+    width: 50%;
+    padding: 0;
+    margin: 0;
+}
+
+#banners:nth-child(2) {
+    width: 50%;
+    padding: 0;
+    margin: 0;
+}
+
+.banner:nth-child(1) {
+    background: #fff;
+    color: black;
+}
+
+.banner:nth-child(2) {
+    background: #000;
+    color: #fff;
+}
+
+.banner-detailed {
+    opacity: 0;
+    display: none;
+}
+
+.banner:hover .banner-detailed {
+    opacity: 1;
+    display: block;
+}
+
+.banner:hover .banner-standard {
+    opacity: 0;
+    display: none;
+}
+
+#content {
+    padding-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr) 50%;
+    grid-template-rows: 100px 200px 500px 350px 250px;
+    grid-template-areas:
+        "ept ept ept vi"
+        "ib1 ib1 ib1 vi"
+        "ib2 ib2 ib2 vi"
+        "cp  cp  cp  cp"
+        "ha  ha  ha  ha";
+}
+
+#info_bubble_black {
+    grid-area: ib1;
+    background: #000;
+    color: white;
+    text-align: center;
+}
+
+#info_bubble_white {
+    grid-area: ib2;
+}
+
+#vertical_image {
+    grid-area: vi;
+}
+
+#info_bubble_mixed {
+    grid-area: cp;
+    font-weight: 500;
+    padding: 2rem 25rem;
+}
+
+#article {
+    grid-area: ha;
+}
