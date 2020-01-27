@@ -1,0 +1,240 @@
+body {
+    background: white;
+}
+
+#banners {
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    padding-bottom: 8rem;
+    .banner {
+        &:nth-child(1) {
+            width: 50%;
+            padding: 0;
+            margin: 0;
+            .intro {
+                position: relative;
+                .banner-standard {
+                    padding-left: 2rem;
+                    display: flex;
+                    justify-content: start;
+                    align-items: center;
+                    position: absolute;
+                    background: white;
+                    color: black;
+                    height: 100px;
+                    top: -50px;
+                    width: 80%;
+                    margin: 0 10%;
+                    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+                }
+                .banner-detailed {
+                    padding-left: 2rem;
+                    position: absolute;
+                    background: white;
+                    color: black;
+                    height: 200px;
+                    top: -100px;
+                    width: 80%;
+                    margin: 0 10%;
+                    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+                }
+            }
+            .arrow {
+                position: relative;
+                right: -85%;
+                top: -25px;
+                background: black;
+                border: solid 1px black;
+                border-radius: 100%;
+                width: 50px;
+                height: 50px;
+                display: flex;
+                justify-content: center;
+                img {
+                    filter: invert(100%);
+                    width: 25px;
+                }
+            }
+        }
+        &:nth-child(2) {
+            width: 50%;
+            padding: 0;
+            margin: 0;
+            .intro {
+                position: relative;
+                .banner-standard {
+                    padding-left: 2rem;
+                    display: flex;
+                    justify-content: start;
+                    align-items: center;
+                    position: absolute;
+                    background: black;
+                    color: white;
+                    height: 100px;
+                    top: -50px;
+                    width: 80%;
+                    margin: 0 10%;
+                    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+                }
+                .banner-detailed {
+                    padding-left: 2rem;
+                    position: absolute;
+                    background: black;
+                    color: white;
+                    height: 200px;
+                    top: -100px;
+                    width: 80%;
+                    margin: 0 10%;
+                    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+                    a {
+                        color: white;
+                        img {
+                            filter: invert(100%);
+                        }
+                    }
+                }
+            }
+            .arrow {
+                position: relative;
+                right: -85%;
+                top: -25px;
+                background: white;
+                border: solid 1px white;
+                border-radius: 100%;
+                width: 50px;
+                height: 50px;
+                display: flex;
+                justify-content: center;
+                img {
+                    color: black;
+                    width: 25px;
+                }
+            }
+        }
+        h2 {
+            font-weight: 400;
+            font-size: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+    }
+}
+
+.banner-detailed {
+    opacity: 0;
+    display: none;
+}
+
+.banner:hover {
+    .banner-detailed {
+        opacity: 1;
+        display: block;
+    }
+    .banner-standard {
+        opacity: 0;
+        display: none;
+    }
+}
+
+a {
+    line-height: 20px;
+    font-weight: 500;
+    text-decoration: none;
+    color: black;
+    &:hover {
+        text-decoration: underline;
+        img {
+            transform: translateX(10px);
+        }
+    }
+    img {
+        margin: auto;
+        padding-left: 10px;
+        vertical-align: middle;
+        display: inline-block;
+        transition: all 1s ease-in-out;
+    }
+}
+
+#content {
+    padding-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    grid-template-rows: 130vh 80vh 80vh;
+    grid-template-areas:
+        "ib vi"
+        "cp cp"
+        "ha ha";
+    #info_bubble_black {
+        grid-area: ib;
+        height: 40vh;
+        background: black;
+        color: white;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        top: 50px;
+        margin-right: 15%;
+        padding-left: 25%;
+        p {
+            font-size: 2rem;
+            margin: 0;
+        }
+    }
+    #info_bubble_white {
+        grid-area: ib;
+        margin-top: 45vh;
+        height: 70vh;
+        padding-left: 25%;
+        padding-right: 15%;
+        h2 {
+            font-size: 2.5rem;
+        }
+        p {
+            font-size: 1.8rem;
+        }
+    }
+    #vertical_image {
+        grid-area: vi;
+        img {
+            height: 120vh;
+        }
+    }
+    #info_bubble_mixed {
+        background: rgb(246, 246, 246);
+        background: linear-gradient(
+            90deg,
+            rgba(246, 246, 246, 1) 42.5%,
+            rgba(255, 255, 255, 1) 42.5%
+        );
+        grid-area: cp;
+        font-weight: 500;
+        padding: 2rem 25rem;
+        img {
+            padding: 1rem;
+        }
+        p {
+            font-size: 3rem;
+            font-weight: 700;
+        }
+    }
+    #article {
+        grid-area: ha;
+
+        display: grid;
+        grid-template-columns: repeat(2, 50%);
+        .article-image {
+            grid-column: 1 / 2;
+            height: 80vh;
+        }
+        .infos {
+            grid-column: 2 / 3;
+            padding: 10%;
+            h2 {
+                font-size: 2rem;
+            }
+        }
+    }
+}

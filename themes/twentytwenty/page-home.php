@@ -16,31 +16,32 @@ function mypage_head() {
 
 <?php get_header(); ?>
 
+<?php $arrow = get_field('svg_arrow'); ?>
+
 <div id="banners">
 
     <?php
-
-    // check if the repeater field has rows of data
-    if( have_rows('banner') ):
-
-        // loop through the rows of data
-        while ( have_rows('banner') ) : the_row();
-
-        $image = get_sub_field('image'); 
-        
-        ?>
+    if( have_rows('banner') ): while ( have_rows('banner') ) : the_row();
+    $image = get_sub_field('image'); 
+    ?>
 
         <div class="banner">
             <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>">
 
-            <div class="banner-standard">
-                <h2><?php the_sub_field('title'); ?></h2>
-            </div>
+            <div class="intro">
+                <div class="banner-standard">
+                    <h2><?php the_sub_field('title'); ?></h2>
+                </div>
 
-            <div class="banner-detailed">
-                <h2><?php the_sub_field('hover_title'); ?></h2>
-                <p><?php the_sub_field('hover_description'); ?></p>
-                <a href="<?php the_sub_field('hover_link'); ?>"><?php the_sub_field('hover_link_text'); ?></a>
+                <div class="banner-detailed">
+                    <h2><?php the_sub_field('hover_title'); ?></h2>
+                    <p><?php the_sub_field('hover_description'); ?></p>
+                    <a href="<?php the_sub_field('hover_link'); ?>"><?php the_sub_field('hover_link_text'); ?><img src="<?php echo $arrow['url']; ?>" alt="<?php echo $arrow['alt']; ?>"></a>
+                </div>
+
+                <div class="arrow">
+                    <img src="<?php echo $arrow['url']; ?>" alt="<?php echo $arrow['alt']; ?>">
+                </div>
             </div>
         </div>
 
@@ -54,50 +55,13 @@ function mypage_head() {
     ?>
 </div>
 
-
-
-<!-- <?php
-if( have_rows('banner') ): while ( have_rows('banner') ) : the_row(); 
-?>
-
-    <div id="banner">
-
-        <?php
-        if( have_rows('repeater') ): while ( have_rows('repeater') ) : the_row();       
-        $image = get_sub_field('image'); 
-        ?>
-
-            <div class="banner">
-                <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>">
-
-                <div class="banner-standard">
-                    <h2><?php the_sub_field('title'); ?></h2>
-                </div>
-
-                <div class="banner-detailed">
-                    <h2><?php the_sub_field('hover_title'); ?></h2>
-                    <p><?php the_sub_field('hover_text'); ?></p>
-                    <a href="<?php the_sub_field('hover_link'); ?>"><?php the_sub_field('hover_link_text'); ?></a>
-                </div>
-            </div>
-
-        <?php
-        endwhile; endif;
-        ?>
-
-    </div>
-
-<?php 
-endwhile; endif; 
-?> -->
-
 <div id="content">
 
     <?php
     $info_bubble_black = get_field('info_bubble_black');
     if( $info_bubble_black ): ?>
         <div id="info_bubble_black">
-            <p><strong><?php echo esc_html($info_bubble_black['bold_text']); ?></strong><?php echo esc_html($info_bubble_black['normal_text']); ?></p>
+            <p><?php echo $info_bubble_black['text']; ?></p>
         </div>
     <?php endif; ?>
 
@@ -106,8 +70,8 @@ endwhile; endif;
     if( $info_bubble_white ): ?>
         <div id="info_bubble_white">
             <h2><?php echo esc_html($info_bubble_white['title']); ?></h2>
-            <p><?php echo $info_bubble_white['text']; ?></p>
-            <a href="<?php echo esc_url($info_bubble_white['link']); ?>">Le magasin</a>
+            <?php echo $info_bubble_white['text']; ?>
+            <a href="<?php echo esc_url($info_bubble_white['link']); ?>">Le magasin<img src="<?php echo $arrow['url']; ?>" alt="<?php echo $arrow['alt']; ?>"></a>
         </div>
     <?php endif; ?>
 
@@ -124,8 +88,8 @@ endwhile; endif;
     if( $info_bubble_mixed ): ?>
         <div id="info_bubble_mixed">
             <img src="<?php echo esc_url($info_bubble_mixed['logo']['url']); ?>" alt="<?php echo esc_html($info_bubble_mixed['logo']['alt']); ?>">
-            <p><?php echo esc_html($info_bubble_mixed['text']); ?></p>
-            <a href="<?php echo esc_url($info_bubble_mixed['link']); ?>">Services d'archi d'intérieur</a>
+                <p><?php echo esc_html($info_bubble_mixed['text']); ?></p>
+                <a href="<?php echo esc_url($info_bubble_mixed['link']); ?>">Services d'archi d'intérieur<img src="<?php echo $arrow['url']; ?>" alt="<?php echo $arrow['alt']; ?>"></a>
         </div>
     <?php endif; ?>
 
@@ -133,10 +97,12 @@ endwhile; endif;
     $article = get_field('article');
     if( $article ): ?>
         <div id="article">
-            <img src="<?php echo esc_url($article['image']['url']); ?>" alt="<?php echo esc_html($article['image']['alt']); ?>">
-            <h2><?php echo esc_html($article['title']); ?></h2>
-            <p><?php echo $article['text']; ?></p>
-            <a href="<?php echo esc_url($article['link']); ?>">Tapisserie d'ameublement</a>
+            <img class="article-image" src="<?php echo esc_url($article['image']['url']); ?>" alt="<?php echo esc_html($article['image']['alt']); ?>">
+            <div class="infos">
+                <h2><?php echo esc_html($article['title']); ?></h2>
+                <p><?php echo $article['text']; ?></p>
+                <a href="<?php echo esc_url($article['link']); ?>">Tapisserie d'ameublement<img src="<?php echo $arrow['url']; ?>" alt="<?php echo $arrow['alt']; ?>"></a>
+            </div>
         </div>
     <?php endif; ?>
 

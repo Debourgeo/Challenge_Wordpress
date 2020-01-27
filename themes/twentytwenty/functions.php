@@ -31,6 +31,7 @@
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
+
 function twentytwenty_theme_support() {
 
 	// Add default posts and comments RSS feed links to head.
@@ -755,3 +756,28 @@ function twentytwenty_get_elements_array() {
 	*/
 	return apply_filters( 'twentytwenty_get_elements_array', $elements );
 }
+
+if( function_exists('acf_add_options_page') ) {
+	
+	acf_add_options_page(array(
+		'page_title' 	=> 'Footer',
+		'menu_title'	=> 'Footer',
+		'menu_slug' 	=> 'Footer',
+		'capability'	=> 'edit_posts',
+		'redirect'		=> false
+	));
+	
+	// acf_add_options_sub_page(array(
+	// 	'page_title' 	=> 'Theme Header Settings',
+	// 	'menu_title'	=> 'Header',
+	// 	'parent_slug'	=> 'theme-general-settings',
+	// ));
+	
+	// acf_add_options_sub_page(array(
+	// 	'page_title' 	=> 'Theme Footer Settings',
+	// 	'menu_title'	=> 'Footer',
+	// 	'parent_slug'	=> 'theme-general-settings',
+	// ));
+	
+}
+

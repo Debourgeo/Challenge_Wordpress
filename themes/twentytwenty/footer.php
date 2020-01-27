@@ -1,7 +1,7 @@
 <?php
 /**
  * The template for displaying the footer
- *
+ * 
  * Contains the opening of the #site-footer div and all content after.
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
@@ -12,48 +12,44 @@
  */
 
 ?>
-			<footer id="site-footer" role="contentinfo" class="header-footer-group">
 
-				<div class="section-inner">
+<?php
+/*
+Template Name: Footer
+*/
+?>
 
-					<div class="footer-credits">
+<?php wp_reset_query(); ?>
 
-						<p class="footer-copyright">&copy;
-							<?php
-							echo date_i18n(
-								/* translators: Copyright date format, see https://secure.php.net/date */
-								_x( 'Y', 'copyright date format', 'twentytwenty' )
-							);
-							?>
-							<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a>
-						</p><!-- .footer-copyright -->
+	<div class="pre-footer">
 
-						<p class="powered-by-wordpress">
-							<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'twentytwenty' ) ); ?>">
-								<?php _e( 'Powered by WordPress', 'twentytwenty' ); ?>
-							</a>
-						</p><!-- .powered-by-wordpress -->
+		<?php $arrow = get_field('svg_arrow'); ?>
+		<div class="arrow">
+			<img src="<?php echo $arrow['url']; ?>" alt="<?php echo $arrow['alt']; ?>">
+		</div>
 
-					</div><!-- .footer-credits -->
+		<?php $footer = get_field('Footer', 'option');
 
-					<a class="to-the-top" href="#site-header">
-						<span class="to-the-top-long">
-							<?php
-							/* translators: %s: HTML character for up arrow */
-							printf( __( 'To the top %s', 'twentytwenty' ), '<span class="arrow" aria-hidden="true">&uarr;</span>' );
-							?>
-						</span><!-- .to-the-top-long -->
-						<span class="to-the-top-short">
-							<?php
-							/* translators: %s: HTML character for up arrow */
-							printf( __( 'Up %s', 'twentytwenty' ), '<span class="arrow" aria-hidden="true">&uarr;</span>' );
-							?>
-						</span><!-- .to-the-top-short -->
-					</a><!-- .to-the-top -->
+			?> <pre> <?php
+			var_dump($footer) ;
+			?> </pre> <?php
 
-				</div><!-- .section-inner -->
+			if($footer): ?> 
+			<div class="footer">
+				<img src="<?php echo esc_url($footer['image']['url']); ?>" alt="<?php echo esc_url($footer['image']['alt']); ?>">
+				<p><?php echo esc_html($footer['text']); ?></p>
+				<a href="<?php echo esc_url($footer['link']); ?>">Tissus et habillage maison<img src="<?php echo $arrow['url']; ?>" alt="<?php echo $arrow['alt']; ?>"></a>
+			</div>
 
-			</footer><!-- #site-footer -->
+		<?php endif; ?>
+
+	</div>
+
+			<footer>
+				
+				
+
+			</footer>
 
 		<?php wp_footer(); ?>
 
